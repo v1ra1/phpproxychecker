@@ -5,16 +5,16 @@ When building apps that involve scraping, downloading data and automation, stayi
 
 This guide will walk you through the three steps and provide clean PHP code to detect exactly how anonymous a specific proxy is.
 
-Elite (High-Anonymous)
+<h3>Elite (High-Anonymous)</h3>
 Your proxy is completely undetectable and your real IP will remain hidden. The server you connect to will have no idea you’re using a proxy. These are the best proxies you will find and the level of anonymity and quality is unprecedented.
 
-Anonymous
+<h3>Anonymous</h3>
 Although your proxy IP is still hidden while connected to an anonymous proxy, some servers and proxy detection scripts will be able to detect that you’re using a proxy. Although these proxies are still useful for whitehat practices and data mining, your original IP still has a slight chance of exposure.
 
-Transparent
+<h3>Transparent</h3>
 Your original IP will be exposed and everyone will know you’re using a proxy. It is extremely risky and highly recommended to avoid using transparent proxies while trying to remain anonymous.
 
-Step 1: Create a Proxy Gateway
+<h2>Step 1: Create a Proxy Gateway<h2>
 The first step is to set up a gateway on your server that will emulate what any other server will use to determine if you’re using a proxy using the $_SERVER superglobal. Make sure this PHP file is accessible through a public URL (e.g. http://yourdomain.com/gateway.php)
 
 Since $_SERVER outputs as an array, you’ll need to do some formatting. Here is an example of how I formatted the output in gateway.php as a string to easily extract the data for the proxy anonymity tester:
@@ -31,7 +31,7 @@ foreach ($_SERVER as $key => $value) {
 $output=substr($output, 0, -3);
 ```
 
-Step 2: Connect to the Server Gateway and Retrieve Results
+<h2>Step 2: Connect to the Server Gateway and Retrieve Results</h2>
 Once your gateway is set up, you’re ready to connect to it with your proxy and retrieve the $_SERVER output which will reveal how anonymous the proxy is. Below is some simple PHP code using cURL to access your gateway URL. This simple cURL script will detect if your proxy’s protocol is HTTP, SOCKS4, SOCKS5 or SOCKS4/5, so no need to determine that beforehand.
 
 Note: Make sure the $url variable is set to your gateway URL and the $proxy variable is set to the proxy you’d like to test (in IP:PORT format).
@@ -90,7 +90,7 @@ public function gatewayResults($url, $proxy) {
 } 
 ```
 
-Step 3: Check Proxy Anonymity by Using the Gateway Results
+<h2>Step 3: Check Proxy Anonymity by Using the Gateway Results</h2>
 
 After you have the returned server data from the above gatewayResults function, simply pass it to the function below and it will return the proxy anonymity level.
 
