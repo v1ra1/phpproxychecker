@@ -1,8 +1,5 @@
-anonymousphp
+Anonymousphp
 ============
-
-Remain anonymous when scraping with this script
---
 
 When building apps that involve scraping, downloading data and automation, staying completely anonymous can be a huge concern for developers. Although there are many different proxy checkers out there, most of them all seem to deliver slightly different and unreliable results.
 
