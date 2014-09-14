@@ -19,6 +19,7 @@ The first step is to set up a gateway on your server that will emulate what any 
 
 Since $_SERVER outputs as an array, you’ll need to do some formatting. Here is an example of how I formatted the output in gateway.php as a string to easily extract the data for the proxy anonymity tester:
 
+```php
 $output=';
 
 foreach ($_SERVER as $key => $value) {
@@ -28,12 +29,14 @@ foreach ($_SERVER as $key => $value) {
 }
 
 $output=substr($output, 0, -3);
+```
 
 Step 2: Connect to the Server Gateway and Retrieve Results
 Once your gateway is set up, you’re ready to connect to it with your proxy and retrieve the $_SERVER output which will reveal how anonymous the proxy is. Below is some simple PHP code using cURL to access your gateway URL. This simple cURL script will detect if your proxy’s protocol is HTTP, SOCKS4, SOCKS5 or SOCKS4/5, so no need to determine that beforehand.
 
 Note: Make sure the $url variable is set to your gateway URL and the $proxy variable is set to the proxy you’d like to test (in IP:PORT format).
 
+```php
 public function gatewayResults($url, $proxy) {
     $types=array(
         'http',
@@ -85,11 +88,13 @@ public function gatewayResults($url, $proxy) {
 
     return $results;
 } 
+```
 
 Step 3: Check Proxy Anonymity by Using the Gateway Results
 
 After you have the returned server data from the above gatewayResults function, simply pass it to the function below and it will return the proxy anonymity level.
 
+```php
 public function checkAnonymity($server=array()) {
     $realIp=$_SERVER['REMOTE_ADDR];
 
@@ -128,3 +133,4 @@ public function checkAnonymity($server=array()) {
 } 
 
 die($output); 
+```
