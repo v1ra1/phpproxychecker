@@ -1,4 +1,4 @@
-Anonymousphp
+Anonymous Php
 ============
 
 When building apps that involve scraping, downloading data and automation, staying completely anonymous can be a huge concern for developers. Although there are many different proxy checkers out there, most of them all seem to deliver slightly different and unreliable results.
@@ -14,7 +14,7 @@ Although your proxy IP is still hidden while connected to an anonymous proxy, so
 <h3>Transparent</h3>
 Your original IP will be exposed and everyone will know you’re using a proxy. It is extremely risky and highly recommended to avoid using transparent proxies while trying to remain anonymous.
 
-<h2>Step 1: Create a Proxy Gateway<h2>
+<h2>Step 1: Create a Proxy Gateway</h2>
 The first step is to set up a gateway on your server that will emulate what any other server will use to determine if you’re using a proxy using the $_SERVER superglobal. Make sure this PHP file is accessible through a public URL (e.g. http://yourdomain.com/gateway.php)
 
 Since $_SERVER outputs as an array, you’ll need to do some formatting. Here is an example of how I formatted the output in gateway.php as a string to easily extract the data for the proxy anonymity tester:
